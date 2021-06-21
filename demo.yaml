@@ -1,0 +1,28 @@
+---
+- hosts: localhost
+  collections:
+    - kubernetes.core
+  tasks:
+  - name: Create a service
+    k8s:
+      kubeconfig: config
+      context: minikube
+      state: present
+      definition:
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: web12
+          namespace: jenkins
+          labels:
+            app: galaxy
+            service: web
+        spec:
+          selector:
+            app: galaxy
+            service: web
+          ports:
+          - protocol: TCP
+            targetPort: 8000
+            name: port-8000-tcp
+            port: 8000
