@@ -6,7 +6,7 @@ pipeline {
       stage('Preparation') {
          steps {
             cleanWs()
-            git 'https://github.com/pipeline-testing/ansible-demo.git'
+            git 'https://github.com/yash-demo/ansible-demo.git'
          }
       }
 
